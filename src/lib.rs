@@ -170,13 +170,20 @@ impl<S: Span> Label<S> {
 
 /// A type representing a diagnostic that is ready to be written to output.
 pub struct Report<'a, S: Span = Range<usize>> {
-    kind: ReportKind<'a>,
-    code: Option<String>,
-    msg: Option<String>,
-    note: Option<String>,
-    help: Option<String>,
-    location: (<S::SourceId as ToOwned>::Owned, usize),
-    labels: Vec<Label<S>>,
+    /// The kind of report being produced.
+    pub kind: ReportKind<'a>,
+    /// The code of this report.
+    pub code: Option<String>,
+    /// The message of this report.
+    pub msg: Option<String>,
+    /// The note of this report.
+    pub note: Option<String>,
+    /// The help message of this report.
+    pub help: Option<String>,
+    /// The location of this report.
+    pub location: (<S::SourceId as ToOwned>::Owned, usize),
+    /// The labels of this report.
+    pub labels: Vec<Label<S>>,
     config: Config,
 }
 
@@ -537,5 +544,6 @@ impl Default for Config {
 #[should_panic]
 #[allow(clippy::reversed_empty_ranges)]
 fn backwards_label_should_panic() {
+    #[allow(clippy::reversed_empty_ranges)]
     Label::new(1..0);
 }
