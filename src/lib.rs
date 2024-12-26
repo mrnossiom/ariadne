@@ -202,14 +202,14 @@ impl<S: Span> Label<S> {
 /// A type representing a diagnostic that is ready to be written to output.
 #[must_use = "call `.print()` or `.eprint()` to print the report"]
 pub struct Report<S: Span = Range<usize>, K: ReportStyle = ReportKind> {
-    kind: K,
-    code: Option<String>,
-    msg: Option<String>,
-    notes: Vec<String>,
-    help: Vec<String>,
-    span: S,
-    labels: Vec<Label<S>>,
-    config: Config,
+    pub kind: K,
+    pub code: Option<String>,
+    pub msg: Option<String>,
+    pub notes: Vec<String>,
+    pub help: Vec<String>,
+    pub span: S,
+    pub labels: Vec<Label<S>>,
+    pub config: Config,
 }
 
 impl<S: Span, K: ReportStyle> Report<S, K> {
